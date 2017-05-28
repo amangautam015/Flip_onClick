@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>flip</title>
+      <meta charset="utf-8">
+    
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <style type="text/css">
+/*      
+  .card {
+  position: relative;
+  float: left;
+  padding-bottom: 25%;
+  width: 25%;
+  text-align: center;
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+.card__front,
+.card__back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+}
+
+.card__front {
+  margin-bottom: -45px;
+}
+
+.card__back {
+      
+      
+  
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+
+}
+.business-card.effect__click.flipped .card__front {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+
+}
+
+.business-card.effect__click.flipped .card__back {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+          
+}
+/*CARD  ENDS*/
+
+/*Business Card Css */
+
+.business-card {
+  
+  border: 1px solid #cccccc;
+  background: #00ffff;
+  padding: 10px;
+  border-radius: 4px;
+  border:3px solid #0000ff;
+  
+}
+
+.hobbie {
+  color: #0000ff;
+  font-family: Courier New;
+  font-size: 13px
+}
+.mail {
+  font-size: 13px;
+ }
+ #backside>h4{
+      font-family: Courier New;
+      font-weight: 600;
+      color: #0000ff;
+ }
+ #backside>p{
+      font-family: Courier New;
+      
+      color: #ff0066;
+ }
+ h2{
+      font-family: Courier New;
+      font-weight: 600;
+      color: #0000ff;
+ }
+hr {
+      height:2px;border:none;color:#333;background-color:#0000ff;margin-top: -10px;margin-bottom: 6px;
+}
+img {
+   
+   border:5px solid #0000ff;
+  
+}
+
+.bttn {
+
+  background-color: #ff1ab3;
+  color: #fff;
+  border:1px solid #0000ff;
+}
+
+</style>
+   </head>
+   <body>
+  
+<!--<div class="card effect__click">
+  <div class="card__front">
+    <span class="card__text">front</span>
+  </div>
+  <div class="card__back">
+    <span class="card__text">back</span>
+  </div>
+</div><!-- /card --> 
+<div class="container" style="padding: 20px">
+<h1>Click on card :D</h1>
+      <div class="row">
+        <div class="col-sm-5">
+            <div class="business-card effect__click" >
+      <div id="ff" class="media card__front" style=";z-index: 1" >
+                
+                     <div class="row" id="mb">
+                           <div class="col-sm-4" style="margin-right: 15px;">
+                                 <img class="img-rounded" height="135" width="120" class="media-object img-circle profile-img" src="def.jpg">
+                           </div>
+                            <div class="col-sm-7">
+                                   <h2>Lucy&nbsp;<a href="https://www.facebook.com/aman.gautam.7587370"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></h2>
+                        <hr/>
+                        <div class="hobbie">Programming & Watching AMVs</div>
+                        <div class="mail"><a href="https://www.google.com/gmail/">13annon@gmail.com</a> </div>
+                        <hr style="margin-top:6px ">
+                     
+                           </div>
+                     </div>
+                </div>
+                <div id="bb" class="media card__back" style="z-index: -1;margin-top: -150px" >
+                   <div class="container" id="backside">
+                     <h4>I Hate</h4>
+                       <div class="row">
+                         <div class="col-sm-3" style="margin-left: -40px">
+                       <ul>
+                             <li>Google Dev Window</li>
+                             <li>Rain ;-;</li>
+                             <li>Afternoon Sleep</li>
+                             <li>Interogation</li> <hr style="margin-top: 9px">
+                       </ul>
+
+                     </div>
+
+                      <div class="col-sm-3">
+                       <ul>
+                             <li>Android</li>
+                             <li>Windows</li>
+                             <li>Curd</li>
+                             <li>Cats</li>
+                       </ul>
+                     </div>
+                   </div>
+                    
+                   </div>
+                    
+               
+                </div>
+            </div>
+        </div>
+       
+      </div>
+</div>
+  
+  <script>
+      
+      (function() {
+  var cards = document.querySelectorAll(".business-card.effect__click");
+  for ( var i  = 0, len = cards.length; i < len; i++ ) {
+    var card = cards[i];
+    clickListener( card );
+  }
+
+  function clickListener(card) {
+    card.addEventListener( "click", function() {
+      var c = this.classList;
+      var k1= $(this).find('#ff');
+      var k2= $(this).find('#bb');
+     if( c.contains("flipped") === true ) { c.remove("flipped"); } else { c.add("flipped"); }
+    
+    });
+  }
+})();
+  </script>
+ 
+
+   </body>
+
+   </html>
